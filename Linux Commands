@@ -1,0 +1,35 @@
+# Comandos no terminal
+#permite saber em qual diretorio está no momento
+pwd
+
+#entrar em um diretório
+cd
+
+#saber conteúdo em um diretório
+ls
+
+#excluir diretórios ou arquivos
+rm
+
+#criar diretórios
+mkdir
+
+#verificar permissões
+chmod
+
+#verificar todos os usuário
+finger
+
+Ctrl + a #vai para o inicio da linha de comando
+Ctrl + e #vai para o final da linha de comando
+Ctrl + u #limpa a linha de comando atual
+Ctrl + l #limpa a tela
+
+
+#iniciar RVM pra rodar o ruby
+source /etc/profile.d/rvm.sh
+
+
+
+#alterar o teclado para o padrão ABNT2
+setxkbmap -model abnt2 -layout br

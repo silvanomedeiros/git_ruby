@@ -1,0 +1,17 @@
+# para instalar o banco mysql, caso ainda nao esteja instalado.
+sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+
+# Para entrar no console do mysql, root é o nome do usuário. Será solicitado a senha cadastrada na instalação do mysql.
+mysql -u root -p
+
+# para procurar os bancos criados
+show databases;
+
+# para selecionar um banco
+use 'nome_do_banco';
+
+# para verificar as tabelas do banco
+show tables;
+
+# para mostrar as colunas da tabela
+show columns from 'nome_tabela';

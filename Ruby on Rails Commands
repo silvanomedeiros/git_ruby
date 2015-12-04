@@ -1,0 +1,139 @@
+# Criar um novo projeto em rails.
+# O -d serve para selecionar o banco de dados a ser usado.
+# Por padrão o rails usa o sqlite.
+
+rails new 'nome_do_projeto' -d 'nome_do_banco'
+
+# Logo após a criação rodar o bundle install para instalar as dependências.
+
+bundle install
+
+# Configurar o banco de dados, caso o banco não seja o sqlite.
+# pasta config, arquivo database.yml
+host: 127.0.0.1
+# mudar a versão do banco mysql, caso apresente erro, no arquivo
+# Gemfile para '0.3.20'
+
+# Para rodar o servidor do rails
+rails server
+ou
+rails s
+
+# Criar o banco de dados
+rake db:create
+
+# Criar a tabela do banco
+rake db:migrate
+
+# Criando model do Projeto
+rails generate model 'NomeDoModel' name:string value:float buy_at:datetime
+ou
+rails g model 'NomeDoModel'
+
+# Destruindo model do Projeto
+rails d model 'NomeDoModel'
+
+# O tipo string não precisa ser colocado, ele é por padrão string.
+# comando para adicionar colunas em uma tabela existente.
+rails g migration add_columns_to_articles title:string resume content:text status:boolean published_at:datetime
+
+# Deletar o banco de dados
+rake db:drop
+
+# Carrega console do mysql
+mysql -u root -p
+# digita senha cadastrada na instalação do mysql
+
+# Carrega o framework do rails
+rails console
+ou
+rails c
+	
+	## Comandos do framework ##
+	
+	#Ver todos os itens e tamanho da tabela
+	'NomeDoModelo'.all
+	Article.all.size
+
+	#Criar itens pra Tabela
+	Article.create(title: 'nome', content: 'Ainda nao!')
+
+	#Criar usando objeto
+	novo_objeto = People.new
+	novo_objeto.name = 'Nome qualquer'
+
+	#para persistir no banco
+	novo_objeto.save
+
+	#Atualizar todas as colunas selecionadas
+	User.update_all(occupation: 'Rails Developer')
+	User.all.map {|user| user.occupation}
+
+	#procurar itens da tabela
+	Model.find(1) #Numero da posicao do valor do model
+	User.where(occupation: 'ocupacao').first
+	intruso = User.find_by(occupation: 'ocupacao')
+
+	# forma para deletar um objeto da tabela
+	intruso.delete
+	User.where("occupation LIKE '%Rails%'").delete_all
+
+
+
+# Criar valores para o model usando o arquivo seeds.rb dentro de /db
+# depois de criado roda o comando
+rake db:seed
+# para apagar o registro e rodar o seeds.rb de novo
+rake db:reset
+ou
+rake db:setup
+# no arquivo schema.rb tem os campos
+# a exclamação serve para informar o erro
+articles = Article.create!([
+	{
+		title: 'texto',
+		resume: 'texto',
+		content: 'texto',
+		published_at: Time.now,
+		status: true
+	},
+	{
+		title: 'texto',
+		resume: 'texto',
+		content: 'texto',
+		published_at: Time.now,
+		status: true
+	}
+])
+
+# Dica: para preencher valores falsos
+#No arquivo Gemfile preencher com o campo e rodar bundle
+gem 'ffake'
+#No arquivos seeds.rb usar o require
+require ffake
+
+
+# Routes
+# para verificar as rotas existentes
+rake routes
+
+
+
+
+
+#criar model pelo scaffold
+rails g scaffold NomeModel name
+
+#scaffold_controller cria tudo, menos o Model e a Migration
+rails g scaffold_controller articles
+
+#Criar o controller manualmente
+rails g controller 'nome_do_model' index show new create edit update destroy
+
+
+
+
+
+
+
+
