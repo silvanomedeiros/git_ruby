@@ -1,0 +1,16 @@
+<%= simple_form_for @person do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@person[:name]) %>
+  <%= f.input :cpf %>
+  <%= error_span(@person[:cpf]) %>
+  <%= f.input :gender, collection: ['Masculino', 'Feminino'] %>
+  <%= error_span(@person[:gender]) %>
+  <%= f.input :email %>
+  <%= error_span(@person[:email]) %>
+  <%= f.input :phone %>
+  <%= error_span(@person[:phone]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                people_path, :class => 'btn btn-default' %>
+<% end %>

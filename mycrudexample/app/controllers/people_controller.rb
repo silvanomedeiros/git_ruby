@@ -23,8 +23,14 @@ class PeopleController < ApplicationController
 	def destroy
 	end
 
-	def person_params
-		params.require(:person).permit(:name, :cpf, :birthday, :gender)
-	end
+	private
+
+		def person_params
+			params.require(:person).permit(:name, :cpf, :birthday, :gender)
+		end
+
+		def set_person
+			@person = Person.find(params[:id])
+		end
 
 end

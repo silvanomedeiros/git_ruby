@@ -19,6 +19,9 @@ rails server
 ou
 rails s
 
+#para rodar o banco instalado no rails
+rails dbconsole
+
 # Criar o banco de dados
 rake db:create
 
@@ -106,7 +109,7 @@ articles = Article.create!([
 	}
 ])
 
-# Dica: para preencher valores falsos
+# Dica: para preencher valores falsos no banco
 #No arquivo Gemfile preencher com o campo e rodar bundle
 gem 'ffake'
 #No arquivos seeds.rb usar o require
@@ -128,8 +131,116 @@ rails g scaffold NomeModel name
 rails g scaffold_controller articles
 
 #Criar o controller manualmente
-rails g controller 'nome_do_model' index show new create edit update destroy
+rails g controller 'jobs' index show new create edit update destroy
 
+
+#tirar do gemfile o 'turbolink'
+
+#instalar simple_form, colocar no arquivo Gemfile
+gem 'simple_form'
+#depois rodar o bundle install
+bundle install
+#rodar no terminal
+rails generate simple_form:install --bootstrap
+
+#colocar no arquivo Gemfile
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
+#rodar no terminal
+rails g bootstrap:install
+rails g bootstrap:layout application
+rails g bootstrap:themed 'nome_model'
+
+#Para pluralizar em português, procurar no google:
+rails inflections PT-BR
+
+
+
+#gem para paginação: kaminari
+#colocar no arquivo Gemfile
+gem 'kaminari'
+
+#rodar
+rails g kaminari:config
+
+rails g kaminari:views bootstrap3
+
+#dentro do controller do model
+#na action index
+@clientes = Cliente.page(params[:page])
+#para definir o numero de pessoas por pagina
+@clientes = Cliente.page(params[:page]).per(5)
+
+#para adicionar o paginate
+#colocar no html.erb
+<%= paginate @clientes %>
+
+
+
+#namespace
+#dentro de routes colocar
+namespace :admin do
+end
+#criar uma pasta admin dentro da pasta controllers e dentro da pasta views
+
+
+#gem para autenticação
+gem devise
+#personalizar as views do login
+rails g devise:views
+
+
+
+#railroady
+#para criar diagramas de modelo do projeto
+rake diagram:all
+
+
+
+
+#gem para autorização
+gem declarative_authorization
+
+
+
+
+##Atualizar o ruby
+rvm install 2.2.4
+
+
+
+
+
+#gem para upload de arquivos
+gem 'carrierwave'
+#cria pasta em app/uploaders
+
+
+
+
+
+#URL amigavel, id e titulo na url do site.
+#dentro de um model qualquer, ex: Livro.rb
+def to_param
+	"#{id} #{titulo}".parameterize
+end
+
+
+#outra forma de fazer url amigavel
+rails g migration add_slug_to_livros slug
+rake db:migrate
+
+
+#gem que gerencia o url amigavel
+gem 'friendly_id', '~> 5.1.0'
+
+
+
+
+#
+gem 'nested_form'
 
 
 

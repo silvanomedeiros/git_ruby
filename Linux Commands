@@ -26,10 +26,31 @@ Ctrl + u #limpa a linha de comando atual
 Ctrl + l #limpa a tela
 
 
-#iniciar RVM pra rodar o ruby
+
+#atualizar o apt-get
+apt-get update
+
+
+#iniciar o RVM na conta do Root
 source /etc/profile.d/rvm.sh
 
+#para verificar as versoes Ruby instaladas no RVM
+rvm list
+#para trocar de ruby
+rvm use 2.2.4 --default
+#para atualizar a gem
+gem update
 
+#mudar a permissão de leitura para o usuario atual do Ubuntu
+sudo chown -R [login name] /Library/Ruby/Gems/2.0.0
 
 #alterar o teclado para o padrão ABNT2
 setxkbmap -model abnt2 -layout br
+
+
+
+
+
+
+
+
