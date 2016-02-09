@@ -9,7 +9,7 @@ cd
 ls
 
 #excluir diretórios ou arquivos
-rm
+rm -rf
 
 #criar diretórios
 mkdir

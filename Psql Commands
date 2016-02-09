@@ -1,0 +1,147 @@
+A ferramenta básica de administração do PostgreSQL é o psql, mas é uma ferramenta de administração capaz de administrar praticamente tudo do PostgreSQL.
+
+Para acessá-lo execute:
+
+su – postgresql
+
+psql –U nomeuser nomebanco (tanto no Linux quanto em outros SOs).
+
+
+Geral:
+
+psql -h host -P port -U user -W (perguntar pela senha)
+
+
+Alguns comandos do PostgreSQL da linha de comando do SO:
+
+Se num UNIX faça login como usuário do PostgreSQL, se no Windows execute passando -U nomeusuario.
+
+
+Obtendo ajuda sobre um comando:
+
+comando –help
+
+
+Se num UNIX existem também as manpages (páginas do manual):
+
+man comando
+
+
+psql -l -> lista os bancos de dados
+
+psql -U nomeusuario nomebanco -> conectar à console psql no banco de dados
+
+psql banco -E -> (debug) mostra internamente como cada consulta é realizada
+
+psql –version -> mostra versão do PostgreSQL
+
+
+Outros comandos via linha de comando:
+
+pg_dump, pg_dumpall, pg_restote, createdb, dropdb, createrole, droprole
+
+
+Alguns Comandos do psql:
+
+Para acessar, estando num UNIX:
+
+su – nomeuserpg
+
+psql -U nomeuserpg nomebanco
+
+
+Estando no Windows
+
+psql -U nomeuserpg nomebanco
+
+
+O psql aceita quebra de linhas numa consulta.
+
+O ponto e vírgula (ou <g) indica ordem de execução.
+
+
+Observe atentamente o prompt e suas variações:
+
+=# - este prompt indica um superusuário
+
+=> - este indica um usuário comum
+
+-# - indica comando não finalizado. Aguardando o ponto e vírgula
+
+(# - aguardando o fecha parênteses )
+
+'# - aguardando um fecha apóstrofo '
+
+
+Obs.: Em caso de erro teclar Ctrl+C para encerrar. Lembrando que isso no Windows sai do psql.
+
+\q - sair
+
+\c nomebanco nomeuser – Conectar a outro banco
+
+\i /path/script.sql -- importar script.sql
+
+\timing -- iniciar/parar o cronômetro para atividades
+
+\dT+ -- lista os tipos de dados do PG com detalhes
+
+\cd -- mudar para outro diretório
+
+\d – lista tabelas, índices, sequências ou views
+
+\d nometabela – mostra estrutura da tabela
+
+\dt – lista tabelas
+
+\di – lista indices
+
+\ds – lista sequências
+
+\dv – lista views
+
+\dS – lista tabelas do sistema
+
+\dn – lista esquemas
+
+\dp – lista privilégios
+
+\du – lista usuários
+
+\dg – lista grupos
+
+\l - lista todos os bancos do servidor, juntamente com seus donos e codificações
+
+\e - abre o editor vi com a última consulta
+
+\o - inicia/termina a criação de arquivo. Ex.: \o arquivo.sql
+
+\! comando_do_sistemaoperacional -- executa o arquivo do sistema operacional
+
+\? - ajuda geral dos comandos do psql
+
+\h * - exibe ajuda de todos os comandos
+
+\h comandosql – ajuda específica sobre o comando SQL, ex.: \h alter table
+
+\H – ativa/desativa saída em HTML
+
+\encoding – exibe codificação atual
+
+
+Boa sugestão:
+
+\h CREATE DATABASE
+
+\h CREATE ROLE
+
+
+Exemplo de saída de consulta em HTML pelo PostgreSQL:
+
+
+Gerando um relatório em HTML diretamente através do PostgreSQL
+
+\o relatorio.html
+
+SELECT * FROM cep_tabela WHERE uf='CE';
+
+Obs.: Lembre que o PostgreSQL é case sensitive.
